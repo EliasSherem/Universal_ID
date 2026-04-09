@@ -1,0 +1,12 @@
+# supabase/config.toml
+project_id = "universal-id-mx"
+
+[api]
+port = 54321
+host = "127.0.0.1"
+
+[db]
+port = 54322
+
+[studio]
+port = 54323

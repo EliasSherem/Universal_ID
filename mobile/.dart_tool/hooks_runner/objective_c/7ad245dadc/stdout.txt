@@ -1,0 +1,60 @@
+Running `(cd /Users/elias/.pub-cache/hosted/pub.dev/objective_c-9.3.0/; TMPDIR=/var/folders/27/k5gzvtvj1s95p2zbrnm1_h7h0000gn/T/ PATH=/Users/elias/Downloads/google-cloud-sdk/bin:/Users/elias/Downloads/google-cloud-sdk/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin:/opt/pkg/env/active/bin:/opt/pmk/env/global/bin:/Library/Apple/usr/bin:/opt/homebrew/bin:/Users/elias/Documents/flutter/bin:/Users/elias/Downloads/google-cloud-sdk/bin HOME=/Users/elias /Users/elias/Documents/flutter/bin/cache/dart-sdk/bin/dart --packages=/Users/elias/Downloads/Universal_ID/mobile/.dart_tool/package_config.json /Users/elias/Downloads/Universal_ID/mobile/.dart_tool/hooks_runner/objective_c/7ad245dadc/hook.dill --config=/Users/elias/Downloads/Universal_ID/mobile/.dart_tool/hooks_runner/objective_c/7ad245dadc/input.json )`.
+INFO: 2026-04-08 12:36:47.831144: Running `/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --version`.
+
+INFO: 2026-04-08 12:36:47.842245: Running `/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang --version`.
+
+INFO: 2026-04-08 12:36:47.854461: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.4.sdk -target arm64-apple-darwin -mmacos-version-min=13 -c /Users/elias/.pub-cache/hosted/pub.dev/objective_c-9.3.0/src/include/dart_api_dl.c -fpic -I src -o /Users/elias/Downloads/Universal_ID/mobile/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/include/dart_api_dl.c.o
+
+INFO: 2026-04-08 12:36:47.854903: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.4.sdk -target arm64-apple-darwin -mmacos-version-min=13 -c /Users/elias/.pub-cache/hosted/pub.dev/objective_c-9.3.0/src/objective_c.c -fpic -I src -o /Users/elias/Downloads/Universal_ID/mobile/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c.c.o
+
+INFO: 2026-04-08 12:36:47.855026: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.4.sdk -target arm64-apple-darwin -mmacos-version-min=13 -c /Users/elias/.pub-cache/hosted/pub.dev/objective_c-9.3.0/test/util.c -fpic -I src -o /Users/elias/Downloads/Universal_ID/mobile/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/test/util.c.o
+
+INFO: 2026-04-08 12:36:47.855124: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.4.sdk -target arm64-apple-darwin -mmacos-version-min=13 -x objective-c -fobjc-arc -c /Users/elias/.pub-cache/hosted/pub.dev/objective_c-9.3.0/src/input_stream_adapter.m -fpic -I src -o /Users/elias/Downloads/Universal_ID/mobile/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/input_stream_adapter.m.o
+
+INFO: 2026-04-08 12:36:47.855298: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.4.sdk -target arm64-apple-darwin -mmacos-version-min=13 -x objective-c -fobjc-arc -c /Users/elias/.pub-cache/hosted/pub.dev/objective_c-9.3.0/src/observer.m -fpic -I src -o /Users/elias/Downloads/Universal_ID/mobile/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/observer.m.o
+
+.m.o
+
+INFO: 2026-04-08 12:36:47.855383: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.4.sdk -target arm64-apple-darwin -mmacos-version-min=13 -x objective-c -fobjc-arc -c /Users/elias/.pub-cache/hosted/pub.dev/objective_c-9.3.0/src/ns_number.m -fpic -I src -o /Users/elias/Downloads/Universal_ID/mobile/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/ns_number.m.o
+
+INFO: 2026-04-08 12:36:47.855465: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.4.sdk -target arm64-apple-darwin -mmacos-version-min=13 -x objective-c -fobjc-arc -c /Users/elias/.pub-cache/hosted/pub.dev/objective_c-9.3.0/src/protocol.m -fpic -I src -o /Users/elias/Downloads/Universal_ID/mobile/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/protocol.m.o
+
+INFO: 2026-04-08 12:36:47.855551: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.4.sdk -target arm64-apple-darwin -mmacos-version-min=13 -x objective-c -fobjc-arc -c /Users/elias/.pub-cache/hosted/pub.dev/objective_c-9.3.0/src/objective_c_bindings_generated.m -fpic -I src -o /Users/elias/Downloads/Universal_ID/mobile/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c_bindings_generated.m.o
+
+INFO: 2026-04-08 12:36:47.906155: 
+INFO: 2026-04-08 12:36:47.906295: 
+INFO: 2026-04-08 12:36:47.906345: Generated /Users/elias/Downloads/Universal_ID/mobile/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c.c.o
+INFO: 2026-04-08 12:36:47.906513: 
+INFO: 2026-04-08 12:36:47.906539: 
+INFO: 2026-04-08 12:36:47.906555: Generated /Users/elias/Downloads/Universal_ID/mobile/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/include/dart_api_dl.c.o
+
+INFO: 2026-04-08 12:36:47.911345: 
+INFO: 2026-04-08 12:36:47.911409: 
+INFO: 2026-04-08 12:36:47.911429: Generated /Users/elias/Downloads/Universal_ID/mobile/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/test/util.c.o
+
+INFO: 2026-04-08 12:36:47.927088: 
+INFO: 2026-04-08 12:36:47.927101: 
+INFO: 2026-04-08 12:36:47.927111: Generated /Users/elias/Downloads/Universal_ID/mobile/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/observer.m.o
+
+INFO: 2026-04-08 12:36:48.112006: 
+INFO: 2026-04-08 12:36:48.112071: 
+INFO: 2026-04-08 12:36:48.112092: Generated /Users/elias/Downloads/Universal_ID/mobile/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/input_stream_adapter.m.o
+
+INFO: 2026-04-08 12:36:48.116253: 
+INFO: 2026-04-08 12:36:48.116289: 
+INFO: 2026-04-08 12:36:48.116298: Generated /Users/elias/Downloads/Universal_ID/mobile/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/ns_number.m.o
+
+INFO: 2026-04-08 12:36:48.118228: 
+INFO: 2026-04-08 12:36:48.118256: 
+INFO: 2026-04-08 12:36:48.118268: Generated /Users/elias/Downloads/Universal_ID/mobile/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c.m.o
+
+INFO: 2026-04-08 12:36:48.152773: 
+INFO: 2026-04-08 12:36:48.152806: 
+INFO: 2026-04-08 12:36:48.152817: Generated /Users/elias/Downloads/Universal_ID/mobile/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c_bindings_generated.m.o
+
+INFO: 2026-04-08 12:36:48.153146: Running: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang -shared -Wl,-encryptable -undefined dynamic_lookup -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX26.4.sdk -target arm64-apple-darwin -mmacos-version-min=13 /Users/elias/Downloads/Universal_ID/mobile/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/include/dart_api_dl.c.o /Users/elias/Downloads/Universal_ID/mobile/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c.c.o /Users/elias/Downloads/Universal_ID/mobile/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/test/util.c.o /Users/elias/Downloads/Universal_ID/mobile/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/input_stream_adapter.m.o /Users/elias/Downloads/Universal_ID/mobile/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c.m.o /Users/elias/Downloads/Universal_ID/mobile/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/observer.m.o /Users/elias/Downloads/Universal_ID/mobile/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/ns_number.m.o /Users/elias/Downloads/Universal_ID/mobile/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/protocol.m.o /Users/elias/Downloads/Universal_ID/mobile/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/obj/src/objective_c_bindings_generated.m.o -o /Users/elias/Downloads/Universal_ID/mobile/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/objective_c.dylib
+
+INFO: 2026-04-08 12:36:48.180020: 
+INFO: 2026-04-08 12:36:48.180076: 
+INFO: 2026-04-08 12:36:48.180089: Generated /Users/elias/Downloads/Universal_ID/mobile/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/objective_c.dylib
+

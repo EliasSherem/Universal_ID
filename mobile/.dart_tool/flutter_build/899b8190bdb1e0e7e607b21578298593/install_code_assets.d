@@ -1,0 +1,1 @@
+ /Users/elias/Downloads/Universal_ID/mobile/.dart_tool/flutter_build/899b8190bdb1e0e7e607b21578298593/native_assets.json:  /Users/elias/Downloads/Universal_ID/mobile/.dart_tool/hooks_runner/shared/objective_c/build/7ad245dadc/objective_c.dylib
