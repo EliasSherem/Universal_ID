@@ -6,9 +6,9 @@ import {
 } from '../types/validation';
 
 function sourceTypeToTier(sourceType: ValidationResult['sourceType']): ValidationMethodTier {
-  if (sourceType === 'direct_government') return 'direct_government';
-  if (sourceType === 'authorized_partner') return 'authorized_partner';
-  return 'document_plus_biometrics';
+  // Trust decision: preserve a 1:1 mapping between source evidence origin and trust tier.
+  // This keeps trust explainable and auditable at the field and overall levels.
+  return sourceType;
 }
 
 function statusFromField(field: FieldResult): TrustDecision['status'] {
@@ -36,11 +36,12 @@ export function calculateTrust(result: ValidationResult): {
 
   let assuranceOutcome: 'IAL0' | 'IAL1' | 'IAL2' | 'IAL3' | 'high_assurance_custom' = 'IAL0';
 
-  if (result.sourceType === 'direct_government' && verifiedCount >= 2 && !hasConflict) {
+  // Trust decision: government-validated evidence can reach IAL3 when multiple fields verify without conflicts.
+  if (result.sourceType === 'government_validated' && verifiedCount >= 2 && !hasConflict) {
     assuranceOutcome = 'IAL3';
-  } else if (result.sourceType === 'authorized_partner' && verifiedCount >= 2 && !hasConflict) {
+  } else if (result.sourceType === 'document_verified' && verifiedCount >= 2 && !hasConflict) {
     assuranceOutcome = 'IAL2';
-  } else if (result.sourceType === 'document_plus_biometrics' && verifiedCount >= 2 && !hasConflict) {
+  } else if (result.sourceType === 'document_observed' && verifiedCount >= 2 && !hasConflict) {
     assuranceOutcome = 'IAL1';
   }
 
