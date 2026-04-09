@@ -1,89 +1,77 @@
-import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
+import express from 'express';
+import { getMexicoConnectors } from './validation/connectors/mockMexicoConnectors';
+import { GovernmentValidationOrchestrator } from './validation/orchestrator';
+import { ValidationRequest } from './types/validation';
 
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 8080;
+const port = Number(process.env.PORT ?? 8080);
+const orchestrator = new GovernmentValidationOrchestrator(getMexicoConnectors());
 
 app.use(cors());
 app.use(express.json());
 
-app.get('/health', (req, res) => {
-  res.status(200).json({ status: 'ok', service: 'government-validation-orchestrator' });
+app.get('/health', async (_req, res) => {
+  const health = await orchestrator.health();
+  res.status(200).json({
+    status: health.healthy ? 'ok' : 'degraded',
+    service: 'government-validation-orchestrator',
+    connectors: health.connectors,
+  });
 });
 
-// Basic CURP parsing function
-const STATE_MAP: Record<string, string> = {
-  AS: 'Aguascalientes', BC: 'Baja California', BS: 'Baja California Sur',
-  CC: 'Campeche', CL: 'Coahuila', CM: 'Colima', CS: 'Chiapas',
-  CH: 'Chihuahua', DF: 'Ciudad de México', DG: 'Durango', GT: 'Guanajuato',
-  GR: 'Guerrero', HG: 'Hidalgo', JC: 'Jalisco', MC: 'Estado de México',
-  MN: 'Michoacán', MS: 'Morelos', NT: 'Nayarit', NL: 'Nuevo León',
-  OC: 'Oaxaca', PL: 'Puebla', QT: 'Querétaro', QR: 'Quintana Roo',
-  SP: 'San Luis Potosí', SL: 'Sinaloa', SR: 'Sonora', TC: 'Tabasco',
-  TS: 'Tamaulipas', TL: 'Tlaxcala', VZ: 'Veracruz', YN: 'Yucatán',
-  ZS: 'Zacatecas', NE: 'Nacido en el Extranjero'
-};
+app.get('/api/connectors/health', async (_req, res) => {
+  const health = await orchestrator.health();
+  res.status(200).json(health);
+});
 
-function parseCurp(curp: string) {
-  const regex = /^([A-Z][AEIOUX][A-Z]{2})(\d{2})(\d{2})(\d{2})([HM])([A-Z]{2})[A-Z]{3}[A-Z\d]\d$/;
-  const match = curp.toUpperCase().match(regex);
-  if (!match) return null;
+app.post('/api/validate', async (req, res) => {
+  const body = req.body as Partial<ValidationRequest> & { policyName?: string };
 
-  const [_, initials, yy, mm, dd, gender, stateCode] = match;
-  
-  // Year calculation (naive heuristic: if > current year, assume 19XX, else 20XX)
-  const currentYear = new Date().getFullYear() % 100;
-  const yearObj = parseInt(yy, 10);
-  const fullYear = yearObj > currentYear ? 1900 + yearObj : 2000 + yearObj;
-  
-  return {
-    initials,
-    dateOfBirth: `${fullYear}-${mm}-${dd}`,
-    sexMarker: gender === 'H' ? 'Hombre' : 'Mujer',
-    stateCode: STATE_MAP[stateCode] || stateCode,
-  };
-}
+  if (!body.profileId || !body.domain || typeof body.claimedData !== 'object') {
+    return res.status(400).json({
+      error: 'Missing required fields: profileId, domain, and claimedData are required.',
+    });
+  }
 
-app.post('/api/validate/curp', (req, res) => {
-  const { curp } = req.body;
+  try {
+    const result = await orchestrator.validate(
+      {
+        profileId: body.profileId,
+        domain: body.domain,
+        claimedData: body.claimedData,
+        linkedDocuments: body.linkedDocuments,
+        biometricEvidence: body.biometricEvidence,
+      },
+      body.policyName,
+    );
+
+    return res.status(200).json({ success: true, ...result });
+  } catch (error) {
+    return res.status(400).json({
+      success: false,
+      error: error instanceof Error ? error.message : 'Validation failed unexpectedly',
+    });
+  }
+});
+
+app.post('/api/validate/curp', async (req, res) => {
+  const { curp, profileId = 'anonymous-profile' } = req.body as { curp?: string; profileId?: string };
+
   if (!curp || typeof curp !== 'string') {
     return res.status(400).json({ error: 'Missing or invalid CURP' });
   }
 
-  const cleanCurp = curp.toUpperCase().trim();
-  if (cleanCurp.length !== 18) {
-     return res.status(400).json({ error: 'CURP must be 18 characters' });
-  }
+  const response = await orchestrator.validate({
+    profileId,
+    domain: 'CURP',
+    claimedData: { curp },
+  });
 
-  const parsed = parseCurp(cleanCurp);
-  
-  if (!parsed) {
-     return res.status(400).json({ error: 'Invalid CURP format. Failed government validation checks.' });
-  }
-
-  // Simulate government API delay
-  setTimeout(() => {
-    const validationResult = {
-      overallResult: 'validated',
-      assuranceLevel: 'IAL1',
-      profile: {
-         canonical_curp: cleanCurp,
-         canonical_date_of_birth: parsed.dateOfBirth,
-         canonical_sex_marker: parsed.sexMarker,
-         canonical_state_of_birth: parsed.stateCode,
-         // Note: Without an active RENAPO/Government API key, we cannot query the exact full name.
-         // We reverse-engineer the initials to demonstrate the extraction capability.
-         canonical_full_name: `(Requires Gov API Key) - Initials: ${parsed.initials}`,
-      },
-      validation_domain: 'CURP',
-      sourceType: 'dummy_government_mock'
-    };
-    
-    res.json({ success: true, result: validationResult });
-  }, 1200);
+  return res.status(200).json({ success: true, ...response });
 });
 
 app.listen(port, () => {
