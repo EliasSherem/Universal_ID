@@ -21,12 +21,16 @@ export type ConfidenceLevel = 'low' | 'medium' | 'high';
 export type ValidationMethodTier =
   | 'self_claimed'
   | 'document_observed'
-  | 'document_plus_biometrics'
-  | 'authorized_partner'
-  | 'direct_government'
+  | 'document_verified'
+  | 'government_validated'
   | 'high_assurance_government_linked';
 
-export type SourceType = 'direct_government' | 'authorized_partner' | 'document_plus_biometrics';
+export type SourceType =
+  | 'self_claimed'
+  | 'document_observed'
+  | 'document_verified'
+  | 'government_validated'
+  | 'high_assurance_government_linked';
 
 export interface ValidationRequest {
   profileId: string;

@@ -4,7 +4,7 @@ const onboardingPolicy: ValidationPolicy = {
   name: 'mexico_onboarding_policy',
   requiredDomains: ['CURP'],
   requiresBiometrics: true,
-  minimumLevelForValidated: 'authorized_partner',
+  minimumLevelForValidated: 'government_validated',
 };
 
 const highAssurancePolicy: ValidationPolicy = {
